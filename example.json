@@ -1,0 +1,16 @@
+{
+    "storageAccounts": [
+        {
+            "name": "stexampledev",
+            "sku": "Stanard_LRS"
+        },
+        {
+            "name": "stexampledev2",
+            "sku": "Stanard_LRS"
+        },
+        {
+            "name": "stexampledev3",
+            "sku": "Stanard_LRS"
+        }
+    ]
+}
