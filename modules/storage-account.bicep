@@ -7,13 +7,12 @@ param tags object = {
   Owner: 'RealWorldAzure'
 }
 
-//@minLength(3)
-//@maxLength(24)
-//@description('Name of the storage account.')
+@minLength(3)
+@maxLength(24)
+@description('Name of the storage account.')
 param storageAccountName string
 
-var storageKind = 'StorageV2'
-var minimumTlsVersion = 'TLS1_2'
+@description('Supports HTTPs Traffic Only')
 param supportsHttpsTrafficOnly bool = true
 
 @description('Name of the storage account SKU.')
@@ -30,9 +29,9 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2022-09-01' = {
   sku: {
     name: storageAccountSku
   }
-  kind: storageKind
+  kind: 'StorageV2'
   properties: {
-    minimumTlsVersion: minimumTlsVersion
+    minimumTlsVersion: 'TLS1_2'
     supportsHttpsTrafficOnly: supportsHttpsTrafficOnly
   }
 }

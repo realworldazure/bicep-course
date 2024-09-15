@@ -16,17 +16,17 @@ param storageAccountSku string
 
 module storageAccount 'modules/storage-account.bicep' = {
   name: 'deploy-${storageAccountName}'
-  location: location
   params: {
-    storageAccountName: 
-    storageAccountSku: 
+    location: location
+    storageAccountName: storageAccountName
+    storageAccountSku: storageAccountSku
   }
 }
 
 module auditStorageAccount 'modules/storage-account.bicep' = {
   name: 'deploy-${auditStorageAccountName}'
   params: {
-    storageAccountName: storageAccountName
+    storageAccountName: auditStorageAccountName
     storageAccountSku: storageAccountSku
   }
 }
