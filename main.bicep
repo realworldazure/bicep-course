@@ -17,7 +17,7 @@ param storageAccountSku string
 module storageAccount 'modules/storage-account.bicep' = {
   name: 'deploy-${storageAccountName}'
   params: {
-    location: location
+    location: 'northeurope'
     storageAccountName: storageAccountName
     storageAccountSku: storageAccountSku
   }
