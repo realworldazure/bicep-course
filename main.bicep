@@ -1,6 +1,15 @@
+@description('Location of the storage account')
+param location string
+
+@description('Tags used in the module')
+param tags object = {
+  Environment: 'Development'
+  Owner: 'RealWorldAzure'
+}
+
 @minLength(3)
 @maxLength(24)
-@description('Name of the storage account.')
+@description('Name of the storage account')
 param storageAccountName string
 
 @minLength(3)
@@ -17,7 +26,8 @@ param storageAccountSku string
 module storageAccount 'modules/storage-account.bicep' = {
   name: 'deploy-${storageAccountName}'
   params: {
-    location: 'northeurope'
+    location: location
+    tags: tags
     storageAccountName: storageAccountName
     storageAccountSku: storageAccountSku
   }
@@ -26,6 +36,8 @@ module storageAccount 'modules/storage-account.bicep' = {
 module auditStorageAccount 'modules/storage-account.bicep' = {
   name: 'deploy-${auditStorageAccountName}'
   params: {
+    location: location
+    tags: tags
     storageAccountName: auditStorageAccountName
     storageAccountSku: storageAccountSku
   }
