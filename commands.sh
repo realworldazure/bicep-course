@@ -6,7 +6,7 @@ az deployment group create --name ExampleDeployment --resource-group ExampleReso
 az deployment group create --name "deploy-$(date +%s)" --resource-group ExampleResourceGroup --mode Incremental --template-file main.bicep --parameters main.bicepparam --what-if
 
 # Using Powershell to create a random deployment group name 
-$randomName = "deploy-" + [guid]::NewGuid().ToString()	
+$randomName = "deployment-" + (Get-Date -Format "dddd-dd-MM-yyyy-HHmm")
 az deployment group create `
     --name $randomName `
     --resource-group ExampleResourceGroup `
