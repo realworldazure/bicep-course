@@ -50,6 +50,20 @@ module auditStorageAccount 'modules/storage-account.bicep' = {
   }
 }
 
+var storageBlobDataReaderId = '2a2b9908-6ea1-4ae2-8e65-a410df84e7d1'
+
+module roleAssignments 'modules/storage-account-role-assignment.bicep' = {
+  name: 'deploy-role-assignments'
+  params: {
+    adGroupId: '968f78ef-476c-476e-b1a7-290e145c36ca'
+    roleAssignmentId: storageBlobDataReaderId
+    storageAccountNames: [
+      storageAccount.outputs.storageAccountName
+      auditStorageAccount.outputs.storageAccountName
+    ]
+  }
+}
+
 output storageAccountName string = storageAccount.outputs.storageAccountName
 output auditStorageAccountName string = auditStorageAccount.outputs.storageAccountName
 
